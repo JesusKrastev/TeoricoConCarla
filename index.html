@@ -7,9 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>
   :root{
     --pink:#ffb3c6;
@@ -934,7 +932,7 @@
     <p class="resources-intro">Estos son los sitios y apps que más me han ayudado a aprobar el teórico a la primera.</p>
 
     <div class="resources-list">
-      <a class="resource-row bali-download-link" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
+      <a class="resource-row" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
         <span class="resource-icon"><img src="assets/bali-logo.png" alt="" loading="lazy"></span>
         <span class="resource-body">
           <span class="resource-title">Bali <span class="favorite-tag">⭐</span></span>
@@ -956,11 +954,6 @@
 </div>
 
 <script>
-  document.addEventListener('click', e=>{
-    const baliLink = e.target.closest('.bali-download-link');
-    if(baliLink) window.va('event', { name: 'click_bali_download' });
-  });
-
   const filterRow = document.getElementById('filterRow');
   const filterCards = document.querySelectorAll('.card');
   filterRow.addEventListener('click', e=>{
@@ -1344,7 +1337,7 @@
       </div>
       <div class="quiz-bali-promo">
         <p class="quiz-bali-label">¿Quieres seguir practicando y aprobar a la primera?</p>
-        <a class="resource-row bali-download-link" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
+        <a class="resource-row" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
           <span class="resource-icon"><img src="assets/bali-logo.png" alt="" loading="lazy"></span>
           <span class="resource-body">
             <span class="resource-title">Bali <span class="favorite-tag">⭐</span></span>
