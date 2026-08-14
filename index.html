@@ -28,6 +28,10 @@
   document.addEventListener('click', e => {
     if (e.target.closest('.bali-download-link')) {
       logEvent(analytics, 'click_bali_download');
+    } else if (e.target.closest('#quizStartBtn')) {
+      logEvent(analytics, 'start_quiz');
+    } else if (e.target.closest('#resourcesFab') || e.target.closest('#promoBanner')) {
+      logEvent(analytics, 'open_resources');
     }
   });
 </script>
