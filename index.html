@@ -243,6 +243,206 @@
     .plate{ font-size:.8rem; padding:5px 16px; }
     .sparkle{ display:none; }
   }
+
+  /* ---------- resources fab + panel ---------- */
+  .resources-fab{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:15;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(135deg, var(--mint), var(--blue));
+    border:3px solid var(--ink);
+    border-radius:999px;
+    padding:12px 20px 12px 16px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.9rem;
+    color:var(--ink);
+    box-shadow:3px 4px 0 rgba(0,0,0,.15);
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .resources-fab:hover{
+    transform:translateY(-3px);
+    box-shadow:5px 7px 0 rgba(0,0,0,.18);
+  }
+  .resources-fab .fab-icon{ font-size:1.2rem; }
+
+  .resources-fab.bounce{ animation:fab-jump 1.8s ease-in-out infinite; }
+  .resources-fab.bounce:hover{ animation-play-state:paused; }
+  @keyframes fab-jump{
+    0%, 40%, 100%{ transform:translateY(0); }
+    10%{ transform:translateY(-16px); }
+    20%{ transform:translateY(0); }
+    30%{ transform:translateY(-8px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .resources-fab.bounce{ animation:none; }
+  }
+
+  .resources-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(74,63,78,.55);
+    backdrop-filter:blur(2px);
+    display:flex;
+    justify-content:flex-end;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease;
+    z-index:20;
+  }
+  .resources-overlay.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .resources-panel{
+    width:min(92vw, 420px);
+    height:100%;
+    background:var(--paper);
+    box-shadow:-10px 0 40px rgba(0,0,0,.25);
+    padding:26px 22px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    border-left:4px solid var(--lavender);
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .resources-overlay.open .resources-panel{ transform:translateX(0); }
+
+  .resources-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .resources-header h2{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:1.35rem;
+    margin:0;
+    color:#5a3d55;
+  }
+  .resources-close{
+    flex-shrink:0;
+    font-family:'Baloo 2', sans-serif;
+    font-size:.95rem;
+    font-weight:700;
+    background:#fff;
+    color:var(--ink);
+    border:none;
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+  }
+
+  .resources-intro{
+    margin:0;
+    font-size:.92rem;
+    line-height:1.5;
+    color:#6b5d68;
+  }
+
+  .resources-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .resource-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:#fff;
+    border:2px solid #f1e6f5;
+    border-radius:16px;
+    padding:12px 14px;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .resource-row:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(150,110,150,.18);
+    border-color:var(--r-color, var(--lavender));
+  }
+
+  .resource-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--r-color, var(--lavender));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.3rem;
+    flex-shrink:0;
+    overflow:hidden;
+    box-shadow:0 2px 0 rgba(0,0,0,.06);
+  }
+  .resource-icon img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .resource-body{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+
+  .resource-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.95rem;
+    color:#4a3f4e;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+
+  .resource-desc{
+    font-size:.8rem;
+    line-height:1.35;
+    color:#7a6a78;
+  }
+
+  .resource-arrow{
+    font-size:1.1rem;
+    color:#b099d9;
+    flex-shrink:0;
+    transition:transform .2s ease;
+  }
+  .resource-row:hover .resource-arrow{ transform:translate(3px,-3px); }
+
+  .placeholder-tag{
+    font-size:.6rem;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    background:#fff0f5;
+    color:var(--pink-deep);
+    border:1px dashed var(--pink-deep);
+    border-radius:999px;
+    padding:1px 8px;
+  }
+
+  @media (max-width:520px){
+    .resources-fab .fab-text{ display:none; }
+    .resources-fab{ padding:14px; }
+    .resources-panel{ width:100vw; padding:22px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -281,20 +481,20 @@
       <div class="chip"><b>Recuerda</b>Si doblas la velocidad, el frenado se multiplica por 4</div>
     </div>
 
-    <div class="card c3" data-img="notes/Luz.png" data-title="¿Qué luz uso?">
-      <div class="thumb-wrap"><img src="notes/Luz.png" alt="¿Qué luz uso?" loading="lazy"></div>
+    <div class="card c3" data-img="notes/Luz.jpg" data-title="¿Qué luz uso?">
+      <div class="thumb-wrap"><img src="notes/Luz.jpg" alt="¿Qué luz uso?" loading="lazy"></div>
       <div class="label">💡 ¿Qué luz uso?</div>
       <div class="chip"><b>Truco</b>La antiniebla trasera deslumbra: úsala solo con visibilidad muy baja</div>
     </div>
 
-    <div class="card c4" data-img="notes/Parar o estacionar.png" data-title="Parar no es estacionar">
-      <div class="thumb-wrap"><img src="notes/Parar o estacionar.png" alt="Parar no es estacionar" loading="lazy"></div>
+    <div class="card c4" data-img="notes/Parar o estacionar.jpg" data-title="Parar no es estacionar">
+      <div class="thumb-wrap"><img src="notes/Parar o estacionar.jpg" alt="Parar no es estacionar" loading="lazy"></div>
       <div class="label">⏱️ Parar no es estacionar</div>
       <div class="chip"><b>Recuerda</b>En curva o túnel: ni parar ni estacionar</div>
     </div>
 
-    <div class="card c5" data-img="notes/Puntos carnet.png" data-title="El carnet por puntos">
-      <div class="thumb-wrap"><img src="notes/Puntos carnet.png" alt="El carnet por puntos" loading="lazy"></div>
+    <div class="card c5" data-img="notes/Puntos carnet.jpg" data-title="El carnet por puntos">
+      <div class="thumb-wrap"><img src="notes/Puntos carnet.jpg" alt="El carnet por puntos" loading="lazy"></div>
       <div class="label">⭐ El carnet por puntos</div>
       <div class="chip"><b>Recuerda</b>Si llegas a 0 puntos, pierdes el permiso</div>
     </div>
@@ -315,6 +515,41 @@
   <img id="lightboxImg" src="" alt="">
 </div>
 
+<button class="resources-fab" id="resourcesFab" aria-haspopup="dialog" aria-controls="resourcesPanel">
+  <span class="fab-icon">📚</span>
+  <span class="fab-text">Recursos</span>
+</button>
+
+<div class="resources-overlay" id="resourcesOverlay">
+  <aside class="resources-panel" id="resourcesPanel" role="dialog" aria-modal="true" aria-labelledby="resourcesTitle">
+    <div class="resources-header">
+      <h2 id="resourcesTitle">Recursos recomendados 💗</h2>
+      <button class="resources-close" id="resourcesClose">cerrar ✕</button>
+    </div>
+    <p class="resources-intro">Estos son los sitios y apps que más me han ayudado a aprobar el teórico a la primera.</p>
+
+    <div class="resources-list">
+      <a class="resource-row" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
+        <span class="resource-icon"><img src="assets/bali-logo.png" alt="" loading="lazy"></span>
+        <span class="resource-body">
+          <span class="resource-title">Bali</span>
+          <span class="resource-desc">App con IA para practicar tests del teórico, se adapta a lo que más te cuesta.</span>
+        </span>
+        <span class="resource-arrow">↗</span>
+      </a>
+
+      <a class="resource-row" href="https://www.youtube.com/watch?v=Sx2prUxQbaM" target="_blank" rel="noopener" style="--r-color: var(--lavender)">
+        <span class="resource-icon"><img src="assets/youtube.png" alt="" loading="lazy"></span>
+        <span class="resource-body">
+          <span class="resource-title">El Teórico con Igor</span>
+          <span class="resource-desc">Explica el teórico completo de forma clara y amena, ideal para repasar en vídeo.</span>
+        </span>
+        <span class="resource-arrow">↗</span>
+      </a>
+    </div>
+  </aside>
+</div>
+
 <script>
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
@@ -328,7 +563,19 @@
   function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
   document.getElementById('closeBtn').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e=>{ if(e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLightbox(); });
+
+  const resourcesFab = document.getElementById('resourcesFab');
+  const resourcesOverlay = document.getElementById('resourcesOverlay');
+  resourcesFab.classList.add('bounce');
+  function openResources(){ resourcesOverlay.classList.add('open'); }
+  function closeResources(){ resourcesOverlay.classList.remove('open'); }
+  resourcesFab.addEventListener('click', openResources);
+  document.getElementById('resourcesClose').addEventListener('click', closeResources);
+  resourcesOverlay.addEventListener('click', e=>{ if(e.target === resourcesOverlay) closeResources(); });
+
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape'){ closeLightbox(); closeResources(); }
+  });
 </script>
 
 </body>
