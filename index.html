@@ -117,6 +117,28 @@
     box-shadow:0 2px 0 rgba(0,0,0,.05);
   }
 
+  .filter-badge{
+    font-family:'Quicksand', sans-serif;
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .filter-badge:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+  }
+  .filter-badge:focus-visible{
+    outline:3px solid var(--lavender-deep);
+    outline-offset:2px;
+  }
+  .filter-badge.active{
+    background:linear-gradient(135deg, var(--pink), var(--lavender));
+    border-color:transparent;
+    color:#fff;
+    box-shadow:0 4px 10px rgba(150,110,150,.28);
+  }
+
   /* ---------- grid ---------- */
   main{
     max-width:1180px;
@@ -166,6 +188,12 @@
     transition:transform .4s ease;
   }
   .card:hover .thumb-wrap img{ transform:scale(1.05); }
+
+  .card.card-in{ animation:card-in .35s ease; }
+  @keyframes card-in{
+    from{ opacity:0; transform:translateY(10px) scale(.96); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+  }
 
   .card .label{
     font-family:'Baloo 2', sans-serif;
@@ -458,51 +486,81 @@
   <h1>Apuntes del Teórico</h1>
   <div class="subtitle">para aprobar sin sustos, con mucho brillo ✨</div>
   <p class="intro">Todo lo que necesito repasar antes del examen, resumido en fichitas monas para que se quede en la cabeza. Toca cualquier ficha para verla en grande 💗</p>
-  <div class="badge-row">
-    <span class="badge">📌 6 fichas</span>
-    <span class="badge">🚦 circulación</span>
-    <span class="badge">🅿️ maniobras</span>
-    <span class="badge">👶 seguridad</span>
+  <div class="badge-row" id="filterRow" role="group" aria-label="Filtrar fichas por temática">
+    <button type="button" class="badge filter-badge active" data-filter="all">📌 Todas</button>
+    <button type="button" class="badge filter-badge" data-filter="circulacion">🚦 Circulación</button>
+    <button type="button" class="badge filter-badge" data-filter="maniobras">🅿️ Maniobras</button>
+    <button type="button" class="badge filter-badge" data-filter="seguridad">👶 Seguridad</button>
   </div>
 </header>
 
 <main>
   <div class="grid">
 
-    <div class="card c1" data-img="notes/Aparcar.jpg" data-title="Aparcar sin fallos">
+    <div class="card c1" data-category="maniobras" data-img="notes/Aparcar.jpg" data-title="Aparcar sin fallos">
       <div class="thumb-wrap"><img src="notes/Aparcar.jpg" alt="Aparcar sin fallos" loading="lazy"></div>
       <div class="label">🅿️ Aparcar sin fallos</div>
       <div class="chip"><b>Recuerda</b>La marcha atrás siempre despacio y con la vía despejada</div>
     </div>
 
-    <div class="card c2" data-img="notes/Distancia detencion.jpg" data-title="Distancia de detención">
+    <div class="card c2" data-category="circulacion" data-img="notes/Distancia detencion.jpg" data-title="Distancia de detención">
       <div class="thumb-wrap"><img src="notes/Distancia detencion.jpg" alt="Distancia de detención" loading="lazy"></div>
       <div class="label">💨 Distancia de detención</div>
       <div class="chip"><b>Recuerda</b>Si doblas la velocidad, el frenado se multiplica por 4</div>
     </div>
 
-    <div class="card c3" data-img="notes/Luz.jpg" data-title="¿Qué luz uso?">
+    <div class="card c3" data-category="circulacion" data-img="notes/Luz.jpg" data-title="¿Qué luz uso?">
       <div class="thumb-wrap"><img src="notes/Luz.jpg" alt="¿Qué luz uso?" loading="lazy"></div>
       <div class="label">💡 ¿Qué luz uso?</div>
       <div class="chip"><b>Truco</b>La antiniebla trasera deslumbra: úsala solo con visibilidad muy baja</div>
     </div>
 
-    <div class="card c4" data-img="notes/Parar o estacionar.jpg" data-title="Parar no es estacionar">
+    <div class="card c4" data-category="maniobras" data-img="notes/Parar o estacionar.jpg" data-title="Parar no es estacionar">
       <div class="thumb-wrap"><img src="notes/Parar o estacionar.jpg" alt="Parar no es estacionar" loading="lazy"></div>
       <div class="label">⏱️ Parar no es estacionar</div>
       <div class="chip"><b>Recuerda</b>En curva o túnel: ni parar ni estacionar</div>
     </div>
 
-    <div class="card c5" data-img="notes/Puntos carnet.jpg" data-title="El carnet por puntos">
+    <div class="card c5" data-category="seguridad" data-img="notes/Puntos carnet.jpg" data-title="El carnet por puntos">
       <div class="thumb-wrap"><img src="notes/Puntos carnet.jpg" alt="El carnet por puntos" loading="lazy"></div>
       <div class="label">⭐ El carnet por puntos</div>
       <div class="chip"><b>Recuerda</b>Si llegas a 0 puntos, pierdes el permiso</div>
     </div>
 
-    <div class="card c6" data-img="notes/Silla de niños.jpg" data-title="Sillitas y niños">
+    <div class="card c6" data-category="seguridad" data-img="notes/Silla de niños.jpg" data-title="Sillitas y niños">
       <div class="thumb-wrap"><img src="notes/Silla de niños.jpg" alt="Sillitas y niños" loading="lazy"></div>
       <div class="label">👶 Sillitas y niños</div>
       <div class="chip"><b>Recuerda</b>Manda la altura: 135 cm es el límite legal</div>
+    </div>
+
+    <div class="card c1" data-category="circulacion" data-img="notes/Adelantamiento.jpg" data-title="Distancia y adelantamiento">
+      <div class="thumb-wrap"><img src="notes/Adelantamiento.jpg" alt="Distancia y adelantamiento" loading="lazy"></div>
+      <div class="label">🚗 Distancia y adelantamiento</div>
+      <div class="chip"><b>Recuerda</b>Nunca adelantes en cambio de rasante, curva sin visibilidad o paso a nivel</div>
+    </div>
+
+    <div class="card c2" data-category="circulacion" data-img="notes/Prioridades.jpg" data-title="¿Quién pasa primero?">
+      <div class="thumb-wrap"><img src="notes/Prioridades.jpg" alt="¿Quién pasa primero?" loading="lazy"></div>
+      <div class="label">🚦 ¿Quién pasa primero?</div>
+      <div class="chip"><b>Recuerda</b>Sin señales, cede el paso al que viene por tu derecha</div>
+    </div>
+
+    <div class="card c3" data-category="circulacion" data-img="notes/Señales que mas fallan.jpg" data-title="Las señales que más se fallan">
+      <div class="thumb-wrap"><img src="notes/Señales que mas fallan.jpg" alt="Las señales que más se fallan" loading="lazy"></div>
+      <div class="label">⚠️ Las señales que más se fallan</div>
+      <div class="chip"><b>Truco</b>La forma te dice el significado: triángulo peligro, círculo rojo prohibición</div>
+    </div>
+
+    <div class="card c4" data-category="seguridad" data-img="notes/Tasas de alcohol.jpg" data-title="Tasas de alcohol">
+      <div class="thumb-wrap"><img src="notes/Tasas de alcohol.jpg" alt="Tasas de alcohol" loading="lazy"></div>
+      <div class="label">🍺 Tasas de alcohol</div>
+      <div class="chip"><b>Recuerda</b>Conductor novel: 0,15 mg/l en aire y 0,3 g/l en sangre</div>
+    </div>
+
+    <div class="card c5" data-category="circulacion" data-img="notes/Velocidades.jpg" data-title="Velocidades que siempre caen">
+      <div class="thumb-wrap"><img src="notes/Velocidades.jpg" alt="Velocidades que siempre caen" loading="lazy"></div>
+      <div class="label">🏎️ Velocidades que siempre caen</div>
+      <div class="chip"><b>Recuerda</b>Los límites de velocidad son máximos, nunca objetivos a alcanzar</div>
     </div>
 
   </div>
@@ -551,6 +609,27 @@
 </div>
 
 <script>
+  const filterRow = document.getElementById('filterRow');
+  const filterCards = document.querySelectorAll('.card');
+  filterRow.addEventListener('click', e=>{
+    const btn = e.target.closest('.filter-badge');
+    if(!btn) return;
+    filterRow.querySelectorAll('.filter-badge').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    filterCards.forEach(card=>{
+      const match = filter === 'all' || card.dataset.category === filter;
+      if(match){
+        card.style.display = '';
+        card.classList.remove('card-in');
+        void card.offsetWidth;
+        card.classList.add('card-in');
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   document.querySelectorAll('.card').forEach(card=>{
