@@ -272,6 +272,46 @@
     .sparkle{ display:none; }
   }
 
+  /* ---------- promo banner ---------- */
+  .promo-banner{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    text-align:center;
+    width:100%;
+    border:none;
+    background:linear-gradient(90deg, var(--pink), var(--lavender), var(--blue));
+    background-size:200% 100%;
+    animation:promo-shift 6s ease-in-out infinite;
+    color:#fff;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.9rem;
+    padding:11px 18px;
+    cursor:pointer;
+    text-shadow:0 1px 2px rgba(0,0,0,.15);
+  }
+  .promo-banner:hover{ background-size:220% 100%; }
+  .promo-banner .promo-arrow{
+    display:inline-block;
+    transition:transform .2s ease;
+  }
+  .promo-banner:hover .promo-arrow{ transform:translateX(4px); }
+  @keyframes promo-shift{
+    0%,100%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .promo-banner{ animation:none; }
+  }
+  @media (max-width:520px){
+    .promo-banner{ font-size:.8rem; padding:10px 14px; }
+  }
+
   /* ---------- resources fab + panel ---------- */
   .resources-fab{
     position:fixed;
@@ -466,6 +506,19 @@
     padding:1px 8px;
   }
 
+  .favorite-tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    font-size:.75rem;
+    line-height:1;
+    background:linear-gradient(135deg, var(--pink), var(--peach));
+    border-radius:50%;
+    box-shadow:0 2px 0 rgba(0,0,0,.06);
+  }
+
   @media (max-width:520px){
     .resources-fab .fab-text{ display:none; }
     .resources-fab{ padding:14px; }
@@ -474,6 +527,10 @@
 </style>
 </head>
 <body>
+
+<button type="button" class="promo-banner" id="promoBanner" aria-haspopup="dialog" aria-controls="resourcesPanel">
+  📚 Descubre los recursos que me ayudaron a aprobar <span class="promo-arrow">→</span>
+</button>
 
 <span class="sparkle" style="top:8%; left:6%;">✨</span>
 <span class="sparkle" style="top:14%; right:8%; animation-delay:1s;">⭐</span>
@@ -563,6 +620,24 @@
       <div class="chip"><b>Recuerda</b>Los límites de velocidad son máximos, nunca objetivos a alcanzar</div>
     </div>
 
+    <div class="card c6" data-category="seguridad" data-img="notes/Cinturon y airbang.png" data-title="Cinturón y airbag">
+      <div class="thumb-wrap"><img src="notes/Cinturon y airbang.png" alt="Cinturón y airbag" loading="lazy"></div>
+      <div class="label">🛡️ Cinturón y airbag</div>
+      <div class="chip"><b>Recuerda</b>El cinturón siempre va por encima del hombro, nunca bajo el brazo</div>
+    </div>
+
+    <div class="card c1" data-category="seguridad" data-img="notes/Neumaticos seguros.png" data-title="Neumáticos seguros">
+      <div class="thumb-wrap"><img src="notes/Neumaticos seguros.png" alt="Neumáticos seguros" loading="lazy"></div>
+      <div class="label">🛞 Neumáticos seguros</div>
+      <div class="chip"><b>Recuerda</b>La profundidad mínima legal del dibujo es 1,6 mm</div>
+    </div>
+
+    <div class="card c2" data-category="circulacion" data-img="notes/Señales de obras.png" data-title="Señales de obras">
+      <div class="thumb-wrap"><img src="notes/Señales de obras.png" alt="Señales de obras" loading="lazy"></div>
+      <div class="label">🚧 Señales de obras</div>
+      <div class="chip"><b>Recuerda</b>Las señales de obras son de fondo amarillo y prevalecen sobre las fijas</div>
+    </div>
+
   </div>
 
   <footer>hecho con cariño (y muchas ganas de aprobar) 💕</footer>
@@ -590,7 +665,7 @@
       <a class="resource-row" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
         <span class="resource-icon"><img src="assets/bali-logo.png" alt="" loading="lazy"></span>
         <span class="resource-body">
-          <span class="resource-title">Bali</span>
+          <span class="resource-title">Bali <span class="favorite-tag">⭐</span></span>
           <span class="resource-desc">App con IA para practicar tests del teórico, se adapta a lo que más te cuesta.</span>
         </span>
         <span class="resource-arrow">↗</span>
@@ -649,6 +724,7 @@
   function openResources(){ resourcesOverlay.classList.add('open'); }
   function closeResources(){ resourcesOverlay.classList.remove('open'); }
   resourcesFab.addEventListener('click', openResources);
+  document.getElementById('promoBanner').addEventListener('click', openResources);
   document.getElementById('resourcesClose').addEventListener('click', closeResources);
   resourcesOverlay.addEventListener('click', e=>{ if(e.target === resourcesOverlay) closeResources(); });
 
