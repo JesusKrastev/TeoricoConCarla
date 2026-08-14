@@ -524,6 +524,260 @@
     .resources-fab{ padding:14px; }
     .resources-panel{ width:100vw; padding:22px 16px; }
   }
+
+  /* ---------- quiz: señales nuevas ---------- */
+  .quiz-cta{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+    margin:24px 0 6px;
+    padding:20px 26px;
+    border-radius:24px;
+    background:var(--paper);
+    border:3px solid var(--mint-deep);
+    box-shadow:0 10px 24px rgba(150,110,150,.14), 0 2px 0 rgba(0,0,0,.03);
+  }
+  .quiz-cta-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:1.25rem;
+    color:#4a3f4e;
+  }
+  .quiz-cta-desc{
+    font-size:.88rem;
+    color:#7a6a78;
+    margin-top:4px;
+    max-width:440px;
+  }
+  .quiz-cta-btn{
+    flex-shrink:0;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.95rem;
+    color:#fff;
+    background:linear-gradient(135deg, var(--mint-deep), var(--blue-deep));
+    border:none;
+    border-radius:999px;
+    padding:12px 24px;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(150,110,150,.28);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .quiz-cta-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(150,110,150,.32);
+  }
+  @media (max-width:520px){
+    .quiz-cta{ padding:18px 20px; }
+    .quiz-cta-btn{ width:100%; text-align:center; }
+  }
+
+  .quiz-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(74,63,78,.72);
+    backdrop-filter:blur(2px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:25;
+  }
+  .quiz-overlay.open{ display:flex; }
+
+  .quiz-modal{
+    position:relative;
+    width:min(94vw, 560px);
+    max-height:88vh;
+    overflow-y:auto;
+    background:var(--paper);
+    border-radius:26px;
+    border:3px solid #fff;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    padding:26px 24px;
+  }
+
+  .quiz-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    font-family:'Baloo 2', sans-serif;
+    font-size:.85rem;
+    font-weight:700;
+    background:#fff;
+    color:var(--ink);
+    border:none;
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+    z-index:2;
+  }
+
+  .quiz-header{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+    color:#5a3d55;
+    margin:0 40px 14px 0;
+  }
+
+  .quiz-progress-track{
+    height:10px;
+    border-radius:999px;
+    background:#f1e6f5;
+    overflow:hidden;
+    margin-bottom:6px;
+  }
+  .quiz-progress-fill{
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--mint), var(--blue));
+    transition:width .3s ease;
+  }
+  .sign-badge-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .sign-badge-wrap img{
+    width:auto;
+    height:112px;
+    max-width:100%;
+    object-fit:contain;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,.18));
+  }
+
+  .quiz-progress-label{
+    font-size:.78rem;
+    font-weight:600;
+    color:#8a7686;
+    margin-bottom:16px;
+  }
+
+  .quiz-question{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:1.08rem;
+    color:#4a3f4e;
+    line-height:1.4;
+    margin-bottom:16px;
+  }
+
+  .quiz-options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .quiz-option{
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:.92rem;
+    text-align:left;
+    color:var(--ink);
+    background:#fff;
+    border:2px solid #f1e6f5;
+    border-radius:16px;
+    padding:12px 16px;
+    cursor:pointer;
+    line-height:1.4;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .quiz-option:hover:not(:disabled){
+    transform:translateY(-2px);
+    border-color:var(--lavender-deep);
+    box-shadow:0 6px 14px rgba(150,110,150,.16);
+  }
+  .quiz-option:disabled{ cursor:default; }
+  .quiz-option.correct{
+    background:linear-gradient(135deg, var(--mint), var(--mint-deep));
+    border-color:var(--mint-deep);
+    color:#264a3d;
+  }
+  .quiz-option.wrong{
+    background:#ffd9d9;
+    border-color:#e88f8f;
+    color:#7a2e2e;
+  }
+
+  .quiz-explain{
+    margin-top:14px;
+    padding:12px 16px;
+    border-radius:16px;
+    background:#f7f0fa;
+    font-size:.85rem;
+    line-height:1.45;
+    color:#5a4a56;
+  }
+
+  .quiz-next{
+    display:block;
+    margin:18px auto 0;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.92rem;
+    color:#fff;
+    background:linear-gradient(135deg, var(--pink-deep), var(--lavender-deep));
+    border:none;
+    border-radius:999px;
+    padding:11px 24px;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(150,110,150,.28);
+  }
+
+  .quiz-score{
+    text-align:center;
+    padding:10px 0;
+  }
+  .quiz-score-num{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:2.6rem;
+    color:#5a3d55;
+  }
+  .quiz-score-msg{
+    font-family:'Caveat', cursive;
+    font-size:1.5rem;
+    font-weight:600;
+    color:var(--pink-deep);
+    margin-top:4px;
+  }
+  .quiz-bali-promo{
+    margin-top:22px;
+    padding-top:18px;
+    border-top:2px dashed #f1e6f5;
+  }
+  .quiz-bali-label{
+    margin:0 0 10px;
+    font-size:.82rem;
+    font-weight:600;
+    text-align:center;
+    color:#8a7686;
+  }
+
+  .quiz-restart{
+    display:block;
+    margin:20px auto 0;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.92rem;
+    color:var(--ink);
+    background:#fff;
+    border:3px solid var(--ink);
+    border-radius:999px;
+    padding:10px 22px;
+    cursor:pointer;
+    box-shadow:3px 4px 0 rgba(0,0,0,.15);
+  }
+
+  @media (max-width:520px){
+    .quiz-modal{ padding:22px 18px; }
+  }
 </style>
 </head>
 <body>
@@ -552,6 +806,14 @@
 </header>
 
 <main>
+  <div class="quiz-cta" id="quizCta">
+    <div>
+      <div class="quiz-cta-title">🆕 Test: las señales nuevas</div>
+      <div class="quiz-cta-desc">Preguntas sobre las señales que ha estrenado el nuevo Reglamento General de Circulación</div>
+    </div>
+    <button type="button" class="quiz-cta-btn" id="quizStartBtn">Empezar test →</button>
+  </div>
+
   <div class="grid">
 
     <div class="card c1" data-category="maniobras" data-img="notes/Aparcar.jpg" data-title="Aparcar sin fallos">
@@ -648,6 +910,13 @@
   <img id="lightboxImg" src="" alt="">
 </div>
 
+<div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-modal" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizHeaderTitle">
+    <button class="quiz-close" id="quizCloseBtn">cerrar ✕</button>
+    <div id="quizContent"></div>
+  </div>
+</div>
+
 <button class="resources-fab" id="resourcesFab" aria-haspopup="dialog" aria-controls="resourcesPanel">
   <span class="fab-icon">📚</span>
   <span class="fab-text">Recursos</span>
@@ -666,7 +935,7 @@
         <span class="resource-icon"><img src="assets/bali-logo.png" alt="" loading="lazy"></span>
         <span class="resource-body">
           <span class="resource-title">Bali <span class="favorite-tag">⭐</span></span>
-          <span class="resource-desc">App con IA para practicar tests del teórico, se adapta a lo que más te cuesta.</span>
+          <span class="resource-desc">Me ayudó muchísimo esta app para practicar los tests, os la recomiendo muchísimo.</span>
         </span>
         <span class="resource-arrow">↗</span>
       </a>
@@ -675,7 +944,7 @@
         <span class="resource-icon"><img src="assets/youtube.png" alt="" loading="lazy"></span>
         <span class="resource-body">
           <span class="resource-title">El Teórico con Igor</span>
-          <span class="resource-desc">Explica el teórico completo de forma clara y amena, ideal para repasar en vídeo.</span>
+          <span class="resource-desc">Me aburría el libro, así que me puse a ver este vídeo y es súper completo, lo explica todo genial.</span>
         </span>
         <span class="resource-arrow">↗</span>
       </a>
@@ -729,8 +998,361 @@
   resourcesOverlay.addEventListener('click', e=>{ if(e.target === resourcesOverlay) closeResources(); });
 
   document.addEventListener('keydown', e=>{
-    if(e.key === 'Escape'){ closeLightbox(); closeResources(); }
+    if(e.key === 'Escape'){ closeLightbox(); closeResources(); closeQuiz(); }
   });
+
+  /* ---------- quiz: señales nuevas ---------- */
+  const quizQuestions = [
+    {
+      code: 'P-1e', type: 'peligro',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Peligro por un tramo con varios accesos directos, donde esos accesos deben ceder el paso',
+        'Prohibición de acceder a la vía principal desde caminos o fincas privadas colindantes',
+        'Zona de obras con accesos provisionales, señalizados de forma alterna y temporal',
+        'Intersección giratoria en la que tienen preferencia los vehículos que ya circulan por ella'
+      ],
+      correct: 0,
+      explain: 'A diferencia de las P-1 (a-d), que avisan de incorporaciones con prioridad, la P-1e avisa de que son los propios accesos los que deben ceder el paso.'
+    },
+    {
+      code: 'P-20c', type: 'peligro',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Peligro por la proximidad de un paso de peatones donde los ciclistas deben bajarse de la bici',
+        'Peligro por la proximidad de un paso de peatones adosado o compartido con un paso para ciclistas',
+        'Prohibición de paso para peatones y ciclistas salvo autorización expresa del ayuntamiento',
+        'Zona escolar con paso elevado y limitación de velocidad a 20 km/h en el entorno'
+      ],
+      correct: 1,
+      explain: 'En el paso de peatones "puro" (P-20a) los ciclistas deben bajarse, pero en el paso para ciclistas adosado pueden cruzar montados.'
+    },
+    {
+      code: 'P-24a', type: 'peligro',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Peligro por proximidad de un tramo donde cruzan animales en libertad, en este caso jabalíes',
+        'Prohibición de circular por una zona declarada coto de caza mayor',
+        'Peligro por presencia frecuente de ganado suelto cruzando la calzada',
+        'Zona de reserva natural protegida donde no se permite circular fuera de pista'
+      ],
+      correct: 0,
+      explain: 'La P-24a es una variante de la P-24 (paso de animales en libertad) pensada para avisar específicamente de tramos donde es frecuente el cruce de jabalíes.'
+    },
+    {
+      code: 'P-33', type: 'peligro',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Peligro por posible caída de objetos o piedras sueltas sobre la calzada',
+        'Peligro por pérdida frecuente de visibilidad debida a niebla, lluvia o nieve',
+        'Peligro por pavimento deslizante en condiciones de lluvia o hielo',
+        'Zona de baja iluminación nocturna sin alumbrado público'
+      ],
+      correct: 1,
+      explain: 'Se ha rediseñado para evitar que se confunda con la señal de posible caída de objetos o piedras.'
+    },
+    {
+      code: 'P-35', type: 'peligro',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Peligro por una sucesión de curvas muy cerradas y con poca visibilidad',
+        'Peligro por el cruce de una vía férrea con la carretera sin barreras',
+        'Peligro por un tramo donde los vehículos cruzan trayectorias al cambiar de carril',
+        'Peligro por un tramo de calzada compartido con el carril bici'
+      ],
+      correct: 2,
+      explain: 'El "trenzado" aumenta el riesgo de colisión porque distintos vehículos cambian de carril cruzando sus trayectorias en un mismo tramo.'
+    },
+    {
+      code: 'R-2', type: 'stop',
+      q: 'Si al detenerte en esta señal no tienes visibilidad suficiente, ¿qué debes hacer?',
+      options: [
+        'Continuar circulando despacio hasta recuperar la visibilidad',
+        'Tocar el claxon y avanzar con precaución extrema',
+        'Detenerte de nuevo donde tengas visibilidad, sin poner en peligro a nadie',
+        'Esperar a que otro conductor te haga luces indicando que puedes pasar'
+      ],
+      correct: 2,
+      explain: 'La obligación de detenerse se mantiene hasta que exista visibilidad suficiente para comprobar que no viene nadie.'
+    },
+    {
+      code: 'R-118', type: 'prohibicion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Prohibida la entrada a ciclomotores de dos ruedas',
+        'Prohibida la entrada a vehículos de movilidad personal (VMP)',
+        'Prohibida la entrada a bicicletas y triciclos',
+        'Prohibida la entrada a vehículos agrícolas de motor'
+      ],
+      correct: 1,
+      explain: 'Es una señal nueva y afecta a todos los VMP (patinetes y similares), no solo a los patinetes eléctricos.'
+    },
+    {
+      code: 'R-120', type: 'prohibicion',
+      q: '¿Qué significa esta señal y cómo se concretan sus condiciones?',
+      options: [
+        'Prohibida la entrada según distintivo ambiental u otros criterios que se especifiquen',
+        'Prohibida la entrada a vehículos pesados de más de 3.500 kg',
+        'Prohibida la entrada en Zonas de Bajas Emisiones a partir de una hora determinada',
+        'Prohibida la entrada a vehículos sin la inspección técnica en vigor'
+      ],
+      correct: 0,
+      explain: 'Un panel complementario S-860 (o un cartel con la señal) aclara a qué distintivos ambientales u otros criterios afecta la restricción.'
+    },
+    {
+      code: 'S-1c', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Principio de un tramo de autovía con tres carriles por sentido',
+        'Principio de una carretera 2+1, con carril central reservado de forma alterna',
+        'Fin de un tramo de obras con reducción de carriles',
+        'Carretera convencional con prioridad de paso sobre las laterales'
+      ],
+      correct: 1,
+      explain: 'Es una vía de tres carriles: el central se reserva de forma alterna a uno y otro sentido para facilitar el adelantamiento.'
+    },
+    {
+      code: 'S-47', type: 'indicacion',
+      q: '¿Qué significa esta señal y cuál es la velocidad máxima en esa zona?',
+      options: [
+        'Zona peatonal, con acceso prohibido a cualquier tipo de vehículo',
+        'Zona de coexistencia: circulación compartida, prioridad peatonal y velocidad máxima 20 km/h',
+        'Carril bici exclusivo, con velocidad máxima de 30 km/h para ciclistas',
+        'Zona 30, donde los vehículos motorizados tienen prioridad de paso'
+      ],
+      correct: 1,
+      explain: 'En la zona de coexistencia los peatones tienen prioridad y pueden usar toda la zona (no se señalizan pasos peatonales); el límite es 20 km/h.'
+    },
+    {
+      code: 'S-51b', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Carril reservado para vehículos con alta ocupación (VAO)',
+        'Carril exclusivo reservado para autobuses urbanos',
+        'Carril bici protegido, separado físicamente de la calzada',
+        'Carril de emergencia reservado a vehículos prioritarios'
+      ],
+      correct: 0,
+      explain: 'Indica el número mínimo de ocupantes a partir del cual un vehículo puede circular por ese carril, fijado por el órgano gestor.'
+    },
+    {
+      code: 'S-63b', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'En una calzada de tres carriles, bifurcación en la que solo continúa el carril derecho',
+        'En una calzada de tres carriles, bifurcación donde el central se divide en dos direcciones',
+        'Cierre temporal del carril izquierdo por trabajos de mantenimiento',
+        'Confluencia de los tres carriles en uno solo antes de un túnel'
+      ],
+      correct: 1,
+      explain: 'Este tipo de señales (S-60 a S-63) ayudan a situarse con antelación en el carril adecuado según el destino.'
+    },
+    {
+      code: 'S-105', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Situación de una estación de servicio, incluyendo GLP, autogás o recarga eléctrica',
+        'Área de descanso con restaurante y zona infantil habilitada',
+        'Taller mecánico autorizado para reparaciones urgentes',
+        'Aparcamiento gratuito de larga duración para camiones'
+      ],
+      correct: 0,
+      explain: 'El catálogo se moderniza para reflejar nuevas fuentes de energía como el GLP o la recarga eléctrica.'
+    },
+    {
+      code: 'S-892', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Presencia de un radar fijo dedicado exclusivamente al control de velocidad',
+        'Vigilancia mediante medios automáticos de lo que indica la señal a la que acompaña',
+        'Zona con cámaras de tráfico retransmitiendo en directo para la DGT',
+        'Control policial manual situado en las proximidades'
+      ],
+      correct: 1,
+      explain: 'No es exclusiva de velocidad: acompaña a cualquier señal cuyo cumplimiento se vigile de forma automática.'
+    },
+    {
+      code: 'S-991g', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Posible control de velocidad mediante radares fijos en pórticos',
+        'Posible control de velocidad mediante cámaras de semáforo',
+        'Posible control de velocidad mediante helicóptero o dron',
+        'Posible control de velocidad mediante satélite GPS'
+      ],
+      correct: 2,
+      explain: 'Si el control se dirige a un tipo de vehículo concreto, la señal puede incluir solo el pictograma de ese vehículo.'
+    },
+    {
+      code: 'S-992', type: 'indicacion',
+      q: '¿Qué significa esta señal?',
+      options: [
+        'Distancia en metros que queda hasta el próximo área de servicio',
+        'Número de marcas viales que hay que dejar respecto al vehículo que precede',
+        'Límite de velocidad recomendado al entrar en una curva pronunciada',
+        'Distancia de frenado estimada en condiciones de firme mojado'
+      ],
+      correct: 1,
+      explain: 'Se coloca en tramos con frecuentes colisiones por alcance: carretera convencional, multicarril, túnel o autopista/autovía.'
+    },
+    {
+      q: 'Si un semáforo está en rojo pero un agente de tráfico da paso con la mano, ¿a quién debes obedecer?',
+      options: [
+        'Al semáforo, ya que su indicación es siempre la que prevalece',
+        'Al agente, cuya indicación tiene prioridad sobre el semáforo',
+        'A ninguno, lo correcto es detenerte igualmente por precaución',
+        'Depende de si circulas de día o de noche por esa vía'
+      ],
+      correct: 1,
+      explain: 'Los agentes de la autoridad ocupan el primer puesto en la jerarquía de señales, por delante de semáforos y señales verticales.'
+    },
+    {
+      q: '¿Cuál es el orden correcto de la jerarquía de señales, de mayor a menor prioridad?',
+      options: [
+        'Semáforos > agentes > señales verticales > marcas viales > circunstanciales',
+        'Marcas viales > señales verticales > semáforos > agentes > circunstanciales',
+        'Agentes > circunstanciales/balizamiento > semáforos > señales verticales > marcas viales',
+        'Señales verticales > agentes > semáforos > marcas viales > circunstanciales'
+      ],
+      correct: 2,
+      explain: 'Primero los agentes, luego lo circunstancial (obras, balizamiento), después semáforos, señales verticales y por último marcas viales.'
+    },
+    {
+      q: 'Si coinciden dos señales del mismo grupo que se contradicen (por ejemplo, dos límites de velocidad distintos), ¿cuál debes respetar?',
+      options: [
+        'La primera señal que veas al circular',
+        'La más restrictiva de las dos señales',
+        'La más reciente cronológicamente instalada',
+        'La media aritmética entre ambos valores'
+      ],
+      correct: 1,
+      explain: 'Ante señales del mismo nivel jerárquico que se contradicen, siempre manda la más restrictiva.'
+    },
+    {
+      q: '¿Cuál de estas afirmaciones sobre la entrada en vigor de las nuevas señales es correcta?',
+      options: [
+        'Todas las señales existentes deben sustituirse de inmediato y de forma obligatoria',
+        'Las nuevas señales se irán instalando poco a poco, en tramos nuevos o al reponer las antiguas',
+        'Solo podrán instalarse en autopistas, autovías y vías de alta capacidad',
+        'No podrán instalarse hasta pasados diez años desde la aprobación'
+      ],
+      correct: 1,
+      explain: 'No hace falta cambiar lo ya instalado salvo que toque reponerlo; las nuevas se van incorporando en tramos nuevos o reposiciones.'
+    }
+  ];
+
+  let quizOrder = [];
+  let quizIndex = 0;
+  let quizScore = 0;
+
+  const quizStartBtn = document.getElementById('quizStartBtn');
+  const quizOverlay = document.getElementById('quizOverlay');
+  const quizContent = document.getElementById('quizContent');
+  const quizCloseBtn = document.getElementById('quizCloseBtn');
+
+  function shuffledIndexes(n){
+    const arr = Array.from({length:n}, (_,i)=>i);
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]] = [arr[j],arr[i]];
+    }
+    return arr;
+  }
+
+  function openQuiz(){
+    quizOrder = shuffledIndexes(quizQuestions.length);
+    quizIndex = 0;
+    quizScore = 0;
+    quizOverlay.classList.add('open');
+    renderQuizQuestion();
+  }
+  function closeQuiz(){ quizOverlay.classList.remove('open'); }
+
+  function signBadgeHtml(q){
+    if(!q.code) return '';
+    return `<div class="sign-badge-wrap"><img src="assets/tests/${q.code}.png" alt="Señal ${q.code}" loading="lazy"></div>`;
+  }
+
+  function renderQuizQuestion(){
+    const total = quizOrder.length;
+    const q = quizQuestions[quizOrder[quizIndex]];
+    const pct = Math.round((quizIndex/total)*100);
+    quizContent.innerHTML = `
+      <div class="quiz-header" id="quizHeaderTitle">Test: señales nuevas</div>
+      <div class="quiz-progress-track"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+      <div class="quiz-progress-label">Pregunta ${quizIndex+1} de ${total} · Aciertos: ${quizScore}</div>
+      ${signBadgeHtml(q)}
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-options">
+        ${q.options.map((opt,i)=>`<button type="button" class="quiz-option" data-i="${i}">${opt}</button>`).join('')}
+      </div>
+      <div class="quiz-explain" id="quizExplain" style="display:none;"></div>
+    `;
+    quizContent.querySelectorAll('.quiz-option').forEach(btn=>{
+      btn.addEventListener('click', ()=>answerQuiz(parseInt(btn.dataset.i,10), q));
+    });
+  }
+
+  function answerQuiz(chosen, q){
+    const buttons = quizContent.querySelectorAll('.quiz-option');
+    buttons.forEach(btn=>{
+      btn.disabled = true;
+      const i = parseInt(btn.dataset.i,10);
+      if(i === q.correct) btn.classList.add('correct');
+      else if(i === chosen) btn.classList.add('wrong');
+    });
+    if(chosen === q.correct) quizScore++;
+
+    const explain = document.getElementById('quizExplain');
+    explain.style.display = 'block';
+    explain.textContent = (chosen === q.correct ? '✅ ¡Correcto! ' : '❌ No era esa. ') + q.explain;
+
+    const total = quizOrder.length;
+    const nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.className = 'quiz-next';
+    nextBtn.textContent = (quizIndex+1 < total) ? 'Siguiente pregunta →' : 'Ver resultado 🎉';
+    nextBtn.addEventListener('click', ()=>{
+      quizIndex++;
+      if(quizIndex < total) renderQuizQuestion();
+      else renderQuizResult();
+    });
+    quizContent.appendChild(nextBtn);
+  }
+
+  function renderQuizResult(){
+    const total = quizOrder.length;
+    let msg;
+    if(quizScore === total) msg = '¡Perfecto, te las sabes todas! 🌟';
+    else if(quizScore >= total*0.8) msg = '¡Muy bien, casi perfecto! 💪';
+    else if(quizScore >= total*0.5) msg = 'Bien, pero repasa un poco más 📚';
+    else msg = 'Toca darle otra vuelta a las señales nuevas 🚗💦';
+
+    quizContent.innerHTML = `
+      <div class="quiz-header" id="quizHeaderTitle">Test: señales nuevas</div>
+      <div class="quiz-score">
+        <div class="quiz-score-num">${quizScore} / ${total}</div>
+        <div class="quiz-score-msg">${msg}</div>
+      </div>
+      <div class="quiz-bali-promo">
+        <p class="quiz-bali-label">¿Quieres seguir practicando y aprobar a la primera?</p>
+        <a class="resource-row" href="https://play.google.com/store/apps/details?id=com.jesuskrastev.bali" target="_blank" rel="noopener" style="--r-color: var(--mint)">
+          <span class="resource-icon"><img src="assets/bali-logo.png" alt="" loading="lazy"></span>
+          <span class="resource-body">
+            <span class="resource-title">Bali <span class="favorite-tag">⭐</span></span>
+            <span class="resource-desc">Me ayudó muchísimo esta app para practicar más tests como este, os la recomiendo muchísimo.</span>
+          </span>
+          <span class="resource-arrow">↗</span>
+        </a>
+      </div>
+      <button type="button" class="quiz-restart" id="quizRestartBtn">Repetir test 🔁</button>
+    `;
+    document.getElementById('quizRestartBtn').addEventListener('click', openQuiz);
+  }
+
+  quizStartBtn.addEventListener('click', openQuiz);
+  quizCloseBtn.addEventListener('click', closeQuiz);
+  quizOverlay.addEventListener('click', e=>{ if(e.target === quizOverlay) closeQuiz(); });
 </script>
 
 </body>
